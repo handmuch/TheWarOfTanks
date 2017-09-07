@@ -11,6 +11,7 @@ public class Tank : Unit {
 
 	void Start() {
 		tankShell = GetComponent<TankShell> ();
+		tankShell.Init (team);
 	}
 
 	// Update is called once per frame

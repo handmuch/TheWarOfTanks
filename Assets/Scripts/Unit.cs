@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Team {
+	Red, Blue, Green
+}
+
 public class Unit : MonoBehaviour {
 
-	public bool isEnemy = true;
+	public bool isPlyer = false;
 	public int health = 100;
+	public Team team;
 	public GameObject deadEffect;
 
 	public void ApplyDamage(int damage) {
-		if (isEnemy) {
+		if (!isPlyer) {
 			if (health > damage) {
 				health -= damage;
 			} else {
@@ -19,7 +24,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void Destruct(){
-		if (isEnemy) {
+		if (!isPlyer) {
 			if (deadEffect != null) {
 				Instantiate (deadEffect, transform.position, transform.rotation);
 			}
