@@ -47,6 +47,8 @@ public class AITank : Unit {
 
 	public void searchEnemy() {
 		Collider[] cols = Physics.OverlapSphere (transform.position, searchEnmeyRange, enemyLayerMask);
-		enemy = cols [Random.Range (0, cols.Length)].gameObject;
+		if (cols.Length > 0) {
+			enemy = cols [Random.Range (0, cols.Length)].gameObject;
+		}
 	}
 }
